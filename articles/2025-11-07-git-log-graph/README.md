@@ -47,17 +47,17 @@ we can condense every commit to a single line. Try:
 * 86dbcee - Initial commit
 ```
 
-<pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; line-height: 1.4;">* <span style="color: #cd3131">24308a5 -<span style="color: #e5e510"> (HEAD -&gt; b) Update b.txt
-* <span style="color: #cd3131">379e29c -<span style="color: #e5e510"> Update b.txt
-* <span style="color: #cd3131">a7d4883 -<span style="color: #e5e510"> Update b.txt
-* <span style="color: #cd3131">e30d045 -<span style="color: #e5e510"> Update b.txt
-* <span style="color: #cd3131">ec7c2b5 -<span style="color: #e5e510"> Add b.txt
-* <span style="color: #cd3131">0222637 -<span style="color: #e5e510"> Update main.txt
-* <span style="color: #cd3131">63c8139 -<span style="color: #e5e510"> Update main.txt
-* <span style="color: #cd3131">23900e2 -<span style="color: #e5e510"> Update main.txt
-* <span style="color: #cd3131">642228a -<span style="color: #e5e510"> Update main.txt
-* <span style="color: #cd3131">ea4f22b -<span style="color: #e5e510"> Add main.txt
-* <span style="color: #cd3131">86dbcee -<span style="color: #e5e510"> Initial commit</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></pre>
+<pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; line-height: 1.4;">* <span style="color: #cd3131">24308a5</span> -<span style="color: #e5e510"> (HEAD -&gt; b)</span> Update b.txt
+* <span style="color: #cd3131">379e29c</span> -<span style="color: #e5e510"> Update b.txt</span>
+* <span style="color: #cd3131">a7d4883</span> -<span style="color: #e5e510"> Update b.txt</span>
+* <span style="color: #cd3131">e30d045</span> -<span style="color: #e5e510"> Update b.txt</span>
+* <span style="color: #cd3131">ec7c2b5</span> -<span style="color: #e5e510"> Add b.txt</span>
+* <span style="color: #cd3131">0222637</span> -<span style="color: #e5e510"> Update main.txt</span>
+* <span style="color: #cd3131">63c8139</span> -<span style="color: #e5e510"> Update main.txt</span>
+* <span style="color: #cd3131">23900e2</span> -<span style="color: #e5e510"> Update main.txt</span>
+* <span style="color: #cd3131">642228a</span> -<span style="color: #e5e510"> Update main.txt</span>
+* <span style="color: #cd3131">ea4f22b</span> -<span style="color: #e5e510"> Add main.txt</span>
+* <span style="color: #cd3131">86dbcee</span> -<span style="color: #e5e510"> Initial commit</span></pre>
 
 Try the following:
 
