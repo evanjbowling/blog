@@ -55,7 +55,7 @@ Track: Architectures You've Always Wondered About
 
 Track: Sponsored Solution Track 1
 
-#####`17:05` [Directing a Swarm of Agents for Fun and Profit](https://qconsf.com/presentation/nov2025/directing-swarm-agents-fun-and-profit)
+##### `17:05` [Directing a Swarm of Agents for Fun and Profit](https://qconsf.com/presentation/nov2025/directing-swarm-agents-fun-and-profit)
 
 Track: Polyglot Platforms: Strategies & Practices to Enable Innovation
 
