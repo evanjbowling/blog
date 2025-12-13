@@ -89,4 +89,34 @@ Track: The Path to Senior Engineering Leadership
 
 Track: AI Engineering that Delivers: Blueprint to Impact
 
+#### Wednesday
+
+##### `09:00` [Open Source, Community, and Consequence: The Story of MongoDB](https://qconsf.com/keynote/nov2025/open-source-community-and-consequence-story-mongodb)
+
+Keynote.
+
+##### `10:35` [Choosing Your AI Copilot: Maximizing Developer Productivity](https://qconsf.com/presentation/nov2025/choosing-your-ai-copilot-maximizing-developer-productivity)
+
+Track: Empowering Teams with AI: Productivity and the Future of Software Development
+
+##### `11:45` [Accelerating LLM-Driven Developer Productivity at Zoox](https://qconsf.com/presentation/nov2025/accelerating-llm-driven-developer-productivity-zoox)
+
+Track: Empowering Teams with AI: Productivity and the Future of Software Development
+
+##### `13:35` [When Every Bit Counts: How Valkey Rebuilt Its Hashtable for Modern Hardware](https://qconsf.com/presentation/nov2025/when-every-bit-counts-how-valkey-rebuilt-its-hashtable-modern-hardware)
+
+Track: High-Performance Languages in Modern Development
+
+##### `14:45` [Week-Long Outage: Lifelong Lessons](https://qconsf.com/presentation/nov2025/week-long-outage-lifelong-lessons)
+
+Track: The Stories Behind the Incidents
+
+##### `15:55` [Trustworthy Productivity: Securing AI-Accelerated Development](https://qconsf.com/presentation/nov2025/trustworthy-productivity-securing-ai-accelerated-development)
+
+Track: Empowering Teams with AI: Productivity and the Future of Software Development
+
+##### `17:15` [Humans in the Loop: Engineering Leadership in a Chaotic Industry](https://qconsf.com/keynote/nov2025/humans-loop-engineering-leadership-chaotic-industry)
+
+Keynote.
+
 
