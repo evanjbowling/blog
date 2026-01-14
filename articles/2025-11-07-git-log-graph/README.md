@@ -13,57 +13,37 @@ to dig into specific commits.
 
 The basic command `git log --graph` is verbose:
 
-```shell
-* commit 24308a5078194424b49b9e24750b7e421adb8ac2 (HEAD -> b)
-| Author: Hiro Protagonist <user@domain.co.uk>
-| Date:   Fri Nov 7 19:53:02 2025 -0000
-| 
-|     Update b.txt
-| 
-* commit 379e29ca63ac66e9e7a2bf916ea06460e0a31ac1
-| Author: Hiro Protagonist <user@domain.co.uk>
-| Date:   Fri Nov 7 19:53:01 2025 -0000
-| 
-|     Update b.txt
-| 
-```
+![git log graph output](img/git-log-graph-1.png)
 
 It's very similar to the regular `git log` output. By adding a format
 we can condense every commit to a single line. Try:
 
 `git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s'`
 
-```shell
-* 24308a5 - (HEAD -> b) Update b.txt
-* 379e29c - Update b.txt
-* a7d4883 - Update b.txt
-* e30d045 - Update b.txt
-* ec7c2b5 - Add b.txt
-* 0222637 - Update main.txt
-* 63c8139 - Update main.txt
-* 23900e2 - Update main.txt
-* 642228a - Update main.txt
-* ea4f22b - Add main.txt
-* 86dbcee - Initial commit
-```
-
-<pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; line-height: 1.4;">* <span style="color: #cd3131">24308a5</span> -<span style="color: #e5e510"> (HEAD -&gt; b)</span> Update b.txt
-* <span style="color: #cd3131">379e29c</span> -<span style="color: #e5e510"> Update b.txt</span>
-* <span style="color: #cd3131">a7d4883</span> -<span style="color: #e5e510"> Update b.txt</span>
-* <span style="color: #cd3131">e30d045</span> -<span style="color: #e5e510"> Update b.txt</span>
-* <span style="color: #cd3131">ec7c2b5</span> -<span style="color: #e5e510"> Add b.txt</span>
-* <span style="color: #cd3131">0222637</span> -<span style="color: #e5e510"> Update main.txt</span>
-* <span style="color: #cd3131">63c8139</span> -<span style="color: #e5e510"> Update main.txt</span>
-* <span style="color: #cd3131">23900e2</span> -<span style="color: #e5e510"> Update main.txt</span>
-* <span style="color: #cd3131">642228a</span> -<span style="color: #e5e510"> Update main.txt</span>
-* <span style="color: #cd3131">ea4f22b</span> -<span style="color: #e5e510"> Add main.txt</span>
-* <span style="color: #cd3131">86dbcee</span> -<span style="color: #e5e510"> Initial commit</span></pre>
+![git log color graph output ](img/git-log-graph-one-line.png)
 
 Try the following:
 
 ```bash
 git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 ```
+
+![git log color graph output](img/git-log-graph-one-line-full-details.png)
+
+Now you get author and commit time details. For the rest of this article let's create
+two aliases so we can easily run these commands:
+
+- `lg` - log graph
+- `lgm` - log graph "minimal details"
+
+`~/.gitconfig`:
+
+```
+[alias]
+        lg  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+        lgm = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' 
+```
+
 
 ## Example Repo
 
@@ -77,7 +57,7 @@ echo test > test.txt
 echo "# test" > README.md
 git add .
 git commit -m 'Initial commit'
-git checkout -b a
+git checkout -b branch-a
 echo test > a.txt
 git add a.txt
 git commit -m 'Add a.txt'
@@ -103,7 +83,7 @@ git commit -m 'Update main.txt'
 echo 5 >> main.txt
 git add main.txt
 git commit -m 'Update main.txt'
-git checkout -b b
+git checkout -b branch-b
 echo b1 > b.txt
 git add b.txt
 git commit -m 'Add b.txt'
@@ -117,43 +97,69 @@ git commit -m 'Update main.txt'
 echo 7 >> main.txt
 git add main.txt
 git commit -m 'Update main.txt'
-git merge a -m 'Merge branch a'
-git checkout b
+git merge branch-a -m 'Merge branch-a'
+git checkout branch-b
 echo b3 >> b.txt
 git add b.txt
 git commit -m 'Update b.txt'
 echo b4 >> b.txt
 git add b.txt
 git commit -m 'Update b.txt'
-git checkout -b c
+git checkout -b branch-c
 echo c1 > c.txt
 git add c.txt
 git commit -m 'Add c.txt'
 echo c2 >> c.txt
 git add c.txt
 git commit -m 'Update c.txt'
-git checkout b
+git checkout branch-b
 echo b5 >> b.txt
 git add b.txt
 git commit -m 'Update b.txt'
+git checkout main
+git merge branch-b -m 'Merge branch-b'
+echo 'more main' >> main.txt
+git add main.txt
+git commit -m 'Update main.txt again'
+git merge branch-c -m 'Merge branch-c'
+echo 'more main again' >> main.txt
+git add main.txt
+git commit -m 'Update main.txt again again'
 ```
 
 ## Additional Features
 
-Only display merge commits with: `git lgt --min-parents=2`:
+Only display merge commits with `git lg --min-parents=2`:
+
+![git log output showing only merge commits](img/git-log-2-parents.png)
+
+Looking at the full listory `git lg` you can see these are exactly the commits that
+have two parents:
+
+![git log output diagram of full history](img/git-log-parents-diagram.png)
+
+Omit commits from the main branch when looking at a feature branch `git lg main..HEAD`.
+In this case you have to have the branch checked out. Since all branches are merged into
+main in the example above this gives empty output. Let's add to our repo:
 
 ```shell
+git checkout main
+git checkout -b branch-d
+echo "d" > d.txt
+git add d.txt
+git commit -m 'Add d.txt'
+echo "1" >> d.txt
+git add d.txt
+git commit -m 'Update d.txt'
 ```
 
-Omit commits from the main branch when looking at a feature branch:
+Now running `git lg main..HEAD` gives much more focused output:
 
-```shell
-```
+![git log output showing the two commits on branch d](img/git-log-branch-d-only.png)
 
 Only display root commits: `git lgt --max-parents=0`:
 
-```shell
-```
+![git log output showing only the initial commit](img/git-log-1-root.png)
 
 Normally this shows only a single commit, but it's possible to have
 more. A common reason for having these is using a tool
@@ -178,5 +184,7 @@ git commit -m 'Add b.txt'
 git merge --allow-unrelated-histories a -m 'Merge branch a'
 git merge --allow-unrelated-histories b -m 'Merge branch b'
 ```
+
+![git log output showing two roots](img/git-log-2-roots.png)
 
 
