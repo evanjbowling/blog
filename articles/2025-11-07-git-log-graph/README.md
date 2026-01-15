@@ -217,3 +217,12 @@ git merge --allow-unrelated-histories b -m 'Merge branch b'
 
 That's all for now!
 
+<!-- for next time:
+
+- could be interesting to demonstrate usage of export GIT_CONFIG_GLOBAL= for testing
+- give specifics of formatting options (convert from man git-log to markdown for easy review)
+  - maybe an easy way to demonstrate each option with a single illustrative commit
+- talk about new options that simplify this --oneline
+- review styling choices (absolute date, etc.)
+
+-->
