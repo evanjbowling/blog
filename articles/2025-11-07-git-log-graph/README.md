@@ -44,10 +44,38 @@ two aliases so we can easily run these commands:
         lgm = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' 
 ```
 
+My general recommendation is to start with the `lg`/`lgm` aliases to review at a high level
+and then to drill into specific commits with `git show`.
+
+```shell
+$ git show 3619695
+commit 36196952d38cba5ece62b48407e58976f32e6e25
+Merge: 39d0e18 32c049e
+Author: Hiro Protagonist <user@domain.co.uk>
+Date:   Tue Jan 13 22:32:29 2026 -0600
+
+    Merge branch-c
+
+```
+
+The `--pretty=fuller` option will give both author and commit details:
+
+```shell
+$ git show 3619695 --pretty=fuller
+commit 36196952d38cba5ece62b48407e58976f32e6e25
+Merge: 39d0e18 32c049e
+Author:     Hiro Protagonist <user@domain.co.uk>
+AuthorDate: Tue Jan 13 22:32:29 2026 -0600
+Commit:     Hiro Protagonist <user@domain.co.uk>
+CommitDate: Tue Jan 13 22:32:29 2026 -0600
+
+    Merge branch-c
+
+```
 
 ## Example Repo
 
-Let's make a smallish repo with enough complexity to be interesting:
+Here's how I made a smallish repo with enough complexity to be interesting:
 
 ```bash
 mkdir test
@@ -129,7 +157,7 @@ git commit -m 'Update main.txt again again'
 
 ## Additional Features
 
-Only display merge commits with `git lg --min-parents=2`:
+Only display merge commits with `git lg --min-parents=2` (or `git lg --merges`):
 
 ![git log output showing only merge commits](img/git-log-2-parents.png)
 
@@ -187,4 +215,5 @@ git merge --allow-unrelated-histories b -m 'Merge branch b'
 
 ![git log output showing two roots](img/git-log-2-roots.png)
 
+That's all for now!
 
