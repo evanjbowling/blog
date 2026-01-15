@@ -1,3 +1,7 @@
+<!-- 
+Started: 2025-11-07
+First Publish: 2026-01-14
+-->
 # Git Log Graph
 
 Review log graph feature and config.
