@@ -34,18 +34,11 @@ echo "# myproject" > README.md
 echo "v1" > app.txt
 git add .
 git commit -m 'Initial commit'
-
-# inspect the .git directory
-ls .git
-#COMMIT_EDITMSG	HEAD		info		refs
-#config		hooks		logs
-#description	index		objects
 ```
 
 ## Add a Worktree
 
-Let's say we want to work on a feature branch without leaving `main`.
-First, create a branch and a worktree for it:
+Let's create a branch and worktree in two steps:
 
 ```bash
 git branch feature-x
@@ -64,12 +57,6 @@ cd ../myproject-feature-x
 git branch --show-current
 #feature-x
 
-# Inpsect the local `.git` (it's a file in a worktree)
-file .git 
-#.git: ASCII text
-cat .git
-gitdir: /home/user/rodrigo/temp/myproject/.git/worktrees/myproject-feature-x
-
 # Navigate back to the original directory
 cd ../myproject
 git branch --show-current
@@ -83,7 +70,7 @@ Now let's do some work in both places.
 **Terminal 1** (main):
 
 ```bash
-cd /home/rodrigo/temp/myproject
+# Still in original directory
 echo "v2" > app.txt
 git add app.txt
 git commit -m 'Update app to v2'
@@ -95,7 +82,8 @@ git lg
 **Terminal 2** (feature-x):
 
 ```bash
-cd /home/rodrigo/temp/myproject-feature-x
+# Navigate to the worktree directory
+cd ../myproject-feature-x
 cat app.txt
 #v1
 echo "new feature" > feature.txt
@@ -113,10 +101,11 @@ branch in the main directory because they really do share the same repo and obje
 history:
 
 ```bash
-cd /home/rodrigo/temp/myproject
+# Navigate to the original directory
+cd ../myproject
 git lg --all
 #* 4d832e8 - (feature-x) Add feature
-#| * c982b34 - (HEAD -> main, hotfix) Update app to v2
+#| * c982b34 - (HEAD -> main) Update app to v2
 #|/  
 #* 0392805 - (feature-y) Initial commit
 ```
@@ -129,17 +118,17 @@ that points back to the original repo.
 Let's verify:
 
 ```bash
-cat /home/rodrigo/temp/myproject-feature-x/.git
-#gitdir: /home/rodrigo/temp/myproject/.git/worktrees/myproject-feature-x
+cat myproject-feature-x/.git
+#gitdir: <absolute-path>/myproject/.git/worktrees/myproject-feature-x
 ```
 
 It's a file, not a directory. The contents refer to the path in the main
 repo where the worktree objects are managed.
 
 ```bash
-cd /home/rodrigo/temp/myproject # the main repo where the objects are stored
+cd myproject # the main repo where the objects are stored
 cat .git/worktrees/myproject-test/gitdir 
-#/home/rodrigo/temp/myproject-test/.git
+#<absolute-path>/myproject-test/.git
 
 ls .git/worktrees/myproject-test
 #commondir	HEAD		logs		refs
@@ -152,8 +141,8 @@ To see what worktrees exist:
 
 ```bash
 git worktree list
-#/home/rodrigo/temp/myproject              c982b34 [main]
-#/home/rodrigo/temp/myproject-feature-x    4d832e8 [feature-x]
+#<absolute-path>/myproject              c982b34 [main]
+#<absolute-path>/myproject-feature-x    4d832e8 [feature-x]
 ```
 
 When you're done with a worktree, remove it:
@@ -161,10 +150,10 @@ When you're done with a worktree, remove it:
 ```bash
 git worktree remove ../myproject-feature-x
 git worktree list
-#/home/rodrigo/temp/myproject    c982b34 [main]
+#<asbolute-path>/myproject    c982b34 [main]
 ```
 
-The branch still exists, only the extra working directory is gone:
+The branch still exists but the `myproject-feature-x` working directory is gone:
 
 ```bash
 git branch
@@ -187,8 +176,8 @@ in `../myproject-hotfix`. One command.
 
 ```bash
 git worktree list
-#/home/rodrigo/temp/myproject            c982b34 [main]
-#/home/rodrigo/temp/myproject-hotfix     c982b34 [hotfix]
+#<absolute-path>/myproject            c982b34 [main]
+#<absolute-path>/myproject-hotfix     c982b34 [hotfix]
 ```
 
 ## A Rule: One Branch Per Worktree
@@ -198,7 +187,7 @@ If you try to check out `main` in a second worktree you'll get an error:
 
 ```bash
 git worktree add ../another main
-#fatal: 'main' is already checked out at '/home/rodrigo/temp/myproject'
+#fatal: 'main' is already checked out at '<absolute-path>/myproject'
 ```
 
 ## Temporary Worktrees
