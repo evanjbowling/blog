@@ -7,9 +7,9 @@ update_readme() {
   local README="$GIT_TOP/README.md"
   printf "#blog\n\n" > "$README"
   for a in $(ls "$GIT_TOP/articles" | sort -r); do
-    echo "- [$a]($a)" >> "$README"
+    echo "- [${a}](articles/${a})" >> "${README}"
   done
-  printf "\n" >> "$README"
+  printf "\n" >> "${README}"
 }
 
 update_readme
