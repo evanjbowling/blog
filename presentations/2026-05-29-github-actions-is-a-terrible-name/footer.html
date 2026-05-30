@@ -1,0 +1,27 @@
+<script>
+  (function() {
+    var revealEl = document.querySelector('.reveal');
+    var defaultSize = parseFloat(getComputedStyle(revealEl).fontSize);
+    var currentSize = defaultSize;
+
+    document.addEventListener('keydown', function(e) {
+      if (!e.metaKey) return;
+      if (e.key === '=' || e.key === '+') {
+        e.preventDefault();
+        currentSize = Math.min(currentSize + 2, 72);
+        revealEl.style.fontSize = currentSize + 'px';
+        Reveal.layout();
+      } else if (e.key === '-') {
+        e.preventDefault();
+        currentSize = Math.max(currentSize - 2, 10);
+        revealEl.style.fontSize = currentSize + 'px';
+        Reveal.layout();
+      } else if (e.key === '0') {
+        e.preventDefault();
+        currentSize = defaultSize;
+        revealEl.style.fontSize = currentSize + 'px';
+        Reveal.layout();
+      }
+    });
+  })();
+</script>
