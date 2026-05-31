@@ -1,4 +1,4 @@
-# blog
+# Articles
 
 - [2026-03-27-git-bare-repo](articles/2026-03-27-git-bare-repo)
 - [2026-01-14-git-log-graph](articles/2026-01-14-git-log-graph)
