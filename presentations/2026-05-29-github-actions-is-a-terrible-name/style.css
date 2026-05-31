@@ -1,0 +1,31 @@
+/* Base font size (reveal.js default is 42px) */
+.reveal {
+  font-size: 24px;
+}
+
+/* Change main slide paragraph text */
+.reveal section p {
+  font-size: 0.8em;
+}
+
+/* Change all list items */
+.reveal section ul, .reveal section ol {
+  font-size: 0.8em;
+}
+
+/* Change specific header sizes */
+.reveal h1 {
+  font-size: 2.5em;
+}
+
+/* Change code block sizes */
+.reveal section pre code {
+  font-size: 0.7em !important;
+}
+
+/* Make code blocks scrollable when content overflows */
+.reveal section pre {
+  max-height: 60vh;
+  overflow-y: auto !important;
+}
+
