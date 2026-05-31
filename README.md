@@ -1,6 +1,16 @@
-#blog
+# blog
 
-- [2026-03-27-git-bare-repo](articles/2026-03-27-git-bare-repo)
-- [2026-01-14-git-log-graph](articles/2026-01-14-git-log-graph)
-- [2025-08-01-github-merge](articles/2025-08-01-github-merge)
+Source for [blog.evanjbowling.com](https://blog.evanjbowling.com/).
+
+## How it works
+
+- Articles live in `articles/<date>-<slug>/`
+- GitHub Pages serves the repo directly; `index.md` is the generated home page
+- On each PR, the `build` workflow regenerates `index.md` from the current article list and commits it back to the branch
+
+## Creating a new post
+
+```bash
+bash scripts/new-post.sh <slug>
+```
 
