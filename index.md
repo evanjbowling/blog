@@ -4,3 +4,7 @@
 - [2026-01-14-git-log-graph](articles/2026-01-14-git-log-graph)
 - [2025-08-01-github-merge](articles/2025-08-01-github-merge)
 
+# Presentations
+
+- [2026-05-29-github-actions-is-a-terrible-name](presentations/2026-05-29-github-actions-is-a-terrible-name)
+
